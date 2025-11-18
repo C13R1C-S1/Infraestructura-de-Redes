@@ -1,0 +1,554 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section id="intro" class="block">
+  <h2>Infraestructura de redes - Contenido educativo</h2>
+  <p>
+    Este recurso integra conceptos clave de infraestructura de redes industriales: mapa mental,
+    antenas Yagi, sistemas UPS y fundamentos de VoIP. Está organizado para consulta rápida,
+    enseñanza y documentación institucional.
+  </p>
+</section>
+
+<section id="mapa-mental" class="block">
+  <h3>1. Mapa mental: Industria – Infraestructura y redes</h3>
+
+  <img src="{{ url_for('static', filename='images/mapa_mental.jpg') }}" 
+     alt="Mapa mental de infraestructura de redes" 
+     class="section-image">
+
+  <div class="card">
+    <h4>Concepto central</h4>
+    <p>
+      La infraestructura de redes industriales integra componentes físicos, lógicos y humanos para
+      garantizar conectividad, seguridad y eficiencia operativa en entornos empresariales modernos.
+    </p>
+  </div>
+
+  <div class="grid two">
+    <div class="card">
+      <h4>🌐 Cable estructurado</h4>
+      <p>Sistema de cableado estandarizado que soporta múltiples servicios (datos, voz, video) mediante cables UTP/STP de categorías certificadas.</p>
+    </div>
+    <div class="card">
+      <h4>⚙ Automatización</h4>
+      <p>Implementación de sistemas programables (PLC, SCADA) para control y monitoreo de procesos industriales en tiempo real.</p>
+    </div>
+    <div class="card">
+      <h4>👷 Personal certificado</h4>
+      <p>Técnicos e ingenieros con certificaciones reconocidas (CCNA, CompTIA Network+, BICSI) que aseguran instalaciones según estándares internacionales.</p>
+    </div>
+    <div class="card">
+      <h4>💻 Software de gestión (SII)</h4>
+      <p>Sistemas de Información Industrial que integran ERP, MES y SCADA para administración centralizada de recursos y producción.</p>
+    </div>
+    <div class="card">
+      <h4>🧠 Inteligencia artificial</h4>
+      <p>Algoritmos de machine learning aplicados a mantenimiento predictivo, optimización de redes y análisis de tráfico.</p>
+    </div>
+    <div class="card">
+      <h4>🌍 Telecomunicación</h4>
+      <p>Infraestructura de transmisión de datos mediante fibra óptica, radiofrecuencia y enlaces satelitales para conectividad WAN/LAN.</p>
+    </div>
+    <div class="card">
+      <h4>🧰 Hardware</h4>
+      <p>Switches, routers, servidores, racks y dispositivos de interconexión que conforman la capa física de la red.</p>
+    </div>
+    <div class="card">
+      <h4>🛡 Seguridad</h4>
+      <p>Firewalls, VPN, IDS/IPS, autenticación multifactor y encriptación para protección de datos y accesos.</p>
+    </div>
+    <div class="card">
+      <h4>📹 VoIP, cámaras, CCTV</h4>
+      <p>Convergencia de video vigilancia y telefonía IP en la misma infraestructura de red, optimizando recursos.</p>
+    </div>
+  </div>
+
+</section>
+
+<section id="antena-yagi" class="block">
+  <h3>2. Antena Yagi</h3>
+
+  <img src="{{ url_for('static', filename='images/yagi.jpg') }}" 
+     alt="Mapa mental de infraestructura de redes" 
+     class="section-image">
+
+  <div class="card">
+    <h4>Definición</h4>
+    <p>
+      La antena Yagi-Uda es una antena direccional de alto rendimiento utilizada en telecomunicaciones
+      para recepción y transmisión de señales de radiofrecuencia en bandas VHF, UHF y microondas.
+    </p>
+  </div>
+
+  <div class="grid two">
+    <div class="card">
+      <h4>Componentes principales</h4>
+      <ul class="list">
+        <li><strong>Elemento activo (dipolo):</strong> Conectado al transmisor/receptor.</li>
+        <li><strong>Reflector:</strong> Elemento pasivo que refuerza la señal en dirección frontal.</li>
+        <li><strong>Directores:</strong> Múltiples elementos que enfocan la radiación.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Aplicaciones industriales</h4>
+      <ul class="list">
+        <li><strong>Enlaces punto a punto:</strong> Redes inalámbricas privadas.</li>
+        <li><strong>IoT:</strong> Comunicación con dispositivos en plantas industriales.</li>
+        <li><strong>SCADA:</strong> Telemetría remota.</li>
+        <li><strong>Redes mesh:</strong> Cobertura en áreas extensas.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid two">
+    <div class="card">
+      <h4>Ventajas</h4>
+      <ul class="list">
+        <li><strong>Alta ganancia:</strong> 10–20 dBi.</li>
+        <li><strong>Rechazo lateral:</strong> Interferencias reducidas.</li>
+        <li><strong>Bajo costo:</strong> Comparado con parabólicas.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Consideración técnica</h4>
+      <p>
+        En instalaciones industriales, se prefiere su uso en frecuencias de 900 MHz o 2.4 GHz para evitar
+        interferencias con equipos de producción.
+      </p>
+    </div>
+  </div>
+
+
+  <p class="external">
+    <strong>Más acerca de nuestro proyecto:</strong> <span class="placeholder">http://antenayagitrm41.atwebpages.com/home.html</span>
+  </p>
+</section>
+
+<section id="ups" class="block">
+  <h3>3. UPS y componentes</h3>
+
+  <img src="{{ url_for('static', filename='images/ups.png') }}" 
+     alt="Mapa mental de infraestructura de redes" 
+     class="section-image">
+
+     
+  <div class="card">
+    <h4>Introducción</h4>
+    <p>
+      Un Sistema de Alimentación Ininterrumpida (UPS) protege equipos críticos de red contra fallas
+      eléctricas, garantizando continuidad operativa mediante respaldo de energía con baterías.
+    </p>
+  </div>
+
+  <div class="grid two">
+    <div class="card">
+      <h4>⚡ Fuente redundante</h4>
+      <p>Módulo dual de alimentación que permite operación continua si una fuente falla. Esencial en configuraciones N+1 para alta disponibilidad.</p>
+    </div>
+    <div class="card">
+      <h4>🖥 Procesador DSC/DSP</h4>
+      <p>Circuito de procesamiento digital que regula voltaje, frecuencia y forma de onda, asegurando salida senoidal pura.</p>
+    </div>
+    <div class="card">
+      <h4>🔄 Tarjeta controladora de bypass estático</h4>
+      <p>Conmutador de estado sólido que transfiere carga a red eléctrica en caso de sobrecarga o falla del inversor (tiempo de respuesta &lt; 4 ms).</p>
+    </div>
+    <div class="card">
+      <h4>🔋 Rectificador–Inversor</h4>
+      <ul class="list">
+        <li><strong>Rectificador:</strong> Convierte AC de entrada a DC para cargar baterías.</li>
+        <li><strong>Inversor:</strong> Transforma DC de baterías a AC regulado para equipos.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>⚙ Transformador de aislamiento</h4>
+      <p>Separa eléctricamente la entrada de la salida, eliminando ruido eléctrico y armónicos de la red.</p>
+    </div>
+    <div class="card">
+      <h4>⚡ Supresor de picos (TVSS)</h4>
+      <p>Protección contra transitorios de voltaje (rayos, conmutación de cargas) mediante MOV (Metal Oxide Varistor).</p>
+    </div>
+    <div class="card">
+      <h4>🌀 Ventiladores de enfriamiento</h4>
+      <p>Sistema de refrigeración forzada para disipar calor generado por componentes de potencia.</p>
+    </div>
+    <div class="card">
+      <h4>🔌 Breakers de protección</h4>
+      <ul class="list">
+        <li><strong>Entrada:</strong> Protege contra sobrecargas desde red eléctrica.</li>
+        <li><strong>Rectificador:</strong> Aísla circuito de carga de baterías.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>⚡ Fusibles de plata</h4>
+      <p>Protección ultrarrápida del banco de baterías ante cortocircuitos internos.</p>
+    </div>
+    <div class="card">
+      <h4>📡 Módem celular para monitoreo</h4>
+      <p>Tarjeta 4G/LTE que permite supervisión remota vía SNMP, alertas SMS y gestión mediante aplicaciones móviles.</p>
+    </div>
+    <div class="card">
+      <h4>📊 Display interactivo</h4>
+      <ul class="list">
+        <li><strong>Estado de carga de baterías:</strong> %</li>
+        <li><strong>Voltaje:</strong> Entrada/Salida</li>
+        <li><strong>Potencia consumida:</strong> kW/kVA</li>
+        <li><strong>Autonomía restante:</strong> minutos</li>
+        <li><strong>Historial de eventos:</strong> Registro</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>🔀 Breaker Dual Input (Opcional)</h4>
+      <p>Permite alimentación desde dos fuentes independientes (red principal + generador) con conmutación automática.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>Ejemplo práctico</h4>
+    <p>
+      En un data center industrial con 30 kW de consumo crítico, se instala un UPS de 40 kVA (25% de margen)
+      con autonomía de 15 minutos, suficiente para arrancar generador diésel de respaldo.
+    </p>
+  </div>
+
+  
+</section>
+
+<section id="voip" class="block">
+  <h3>4. Voz IP (VoIP)</h3>
+
+  <div class="image-row">
+  <img src="{{ url_for('static', filename='images/telefono_frontal.png') }}" 
+       alt="Teléfono IP vista frontal">
+  <img src="{{ url_for('static', filename='images/telefono_trasero.png') }}" 
+       alt="Teléfono IP vista trasera">
+</div>
+
+  <div class="card">
+    <h4>Fundamentos</h4>
+    <p>
+      La Voz sobre Protocolo de Internet (VoIP) transmite llamadas telefónicas mediante paquetes de datos en redes IP,
+      eliminando la necesidad de infraestructura telefónica tradicional (PSTN).
+    </p>
+  </div>
+
+  <div class="grid two">
+    <div class="card">
+      <h4>Protocolos principales</h4>
+      <ul class="list">
+        <li><strong>SIP (Session Initiation Protocol):</strong> Estándar para señalización de llamadas.</li>
+        <li><strong>RTP (Real-time Transport Protocol):</strong> Transmisión de audio en tiempo real.</li>
+        <li><strong>G.711 / G.729:</strong> Códecs de compresión de voz.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Ejemplo de implementación</h4>
+      <p>
+        Una empresa con 30 empleados migra de líneas analógicas a VoIP, reduciendo costos de telefonía en 60% al usar
+        troncales SIP con proveedor en nube.
+      </p>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h4>📞 Panel frontal del teléfono IP</h4>
+    <div class="grid two">
+      <div class="card">
+        <h5>Botones de control de llamada</h5>
+        <ul class="list">
+          <li><strong>🔴 HOLD (Retener):</strong> Coloca llamada en espera sin desconectar. Útil para atender múltiples líneas simultáneamente.</li>
+          <li><strong>↔️ TRANSFER (Transferir):</strong> Redirige llamada activa a otra extensión.
+            <ul>
+              <li><strong>Ciega:</strong> Transfiere directamente sin consultar.</li>
+              <li><strong>Asistida:</strong> Anuncia llamada antes de transferir.</li>
+            </ul>
+          </li>
+          <li><strong>👥 CONFERENCE (Conferencia):</strong> Conecta hasta 3–5 participantes. Requiere servidor con mezclado de audio.</li>
+          <li><strong>🧭 Navegación (▲▼◄►):</strong> Menús, historial y directorio.</li>
+          <li><strong>📇 Contactos:</strong> Directorio corporativo (LDAP/AD).</li>
+          <li><strong>🔔 MWI:</strong> Indicador de mensajes de voz.</li>
+          <li><strong>🔢 Teclas numéricas (0–9, *, #):</strong> Marcación e IVR.</li>
+          <li><strong>📞 Línea (Line Keys):</strong> Estado de extensiones: 🟢 disponible, 🔴 en llamada, 🟠 en espera.</li>
+          <li><strong>🎧 Auriculares:</strong> Activar/desactivar (RJ9).</li>
+          <li><strong>⏮ Redial:</strong> Último número marcado.</li>
+          <li><strong>🔊 Volumen (+ / -):</strong> Ajuste de niveles.</li>
+          <li><strong>🔇 Mute:</strong> Silencia micrófono.</li>
+          <li><strong>📢 Manos libres:</strong> Altavoz integrado.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h5>🔌 Panel trasero del teléfono IP</h5>
+        <ul class="list">
+          <li><strong>⚡ Fuente de alimentación:</strong> Puerto DC (5V/12V) o PoE 802.3af.</li>
+          <li><strong>🌐 Puerto de red (LAN):</strong> RJ45 10/100/1000 Mbps. Soporta VLAN voz/datos.</li>
+          <li><strong>💻 Conexión a PC (PC Port):</strong> Passthrough para reducir puntos de red.</li>
+          <li><strong>🎧 Auriculares (Headset):</strong> RJ9 o USB con cancelación de ruido.</li>
+          <li><strong>📞 Auricular (Handset):</strong> Conector RJ9 tradicional.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="erp" class="block">
+  <h3>5. ERP (Enterprise Resource Planning)</h3>
+
+  <div class="card">
+    <h4>Definición</h4>
+    <p>
+      Un sistema de ERP consiste en soluciones de módulos o aplicaciones de negocio integradas que comparten una base de datos en común. 
+      Cada módulo se enfoca en un área del negocio, pero todos trabajan juntos usando los mismos datos para cubrir las necesidades de la empresa.
+    </p>
+  </div>
+
+  <div class="card">
+    <h4>Módulos principales de un ERP</h4>
+
+    <img src="{{ url_for('static', filename='images/infraestructura_erp.png') }}" 
+     alt="Mapa mental de infraestructura de redes" 
+     class="section-image">
+
+    <div class="grid two">
+      <div class="card">
+        <h5>💰 Finanzas</h5>
+        <p>Gestión contable, cuentas por pagar/por cobrar, tesorería y reportes financieros. Permite transparencia y cumplimiento normativo.</p>
+      </div>
+      <div class="card">
+        <h5>🚚 Logística</h5>
+        <p>Control de inventarios, almacenes y distribución. Optimiza la cadena de suministro y reduce costos de transporte.</p>
+      </div>
+      <div class="card">
+        <h5>📦 Procurement (Compras)</h5>
+        <p>Automatiza solicitudes de compra, órdenes y relaciones con proveedores. Mejora negociación y control de gastos.</p>
+      </div>
+      <div class="card">
+        <h5>👥 Recursos Humanos</h5>
+        <p>Gestión de nómina, reclutamiento, capacitación y desempeño. Centraliza datos de empleados y facilita cumplimiento laboral.</p>
+      </div>
+      <div class="card">
+        <h5>🏭 Producción</h5>
+        <p>Planificación de materiales (MRP), control de planta y órdenes de fabricación. Asegura eficiencia en procesos industriales.</p>
+      </div>
+      <div class="card">
+        <h5>📈 Ventas y CRM</h5>
+        <p>Gestión de clientes, cotizaciones, pedidos y facturación. Integra marketing y servicio postventa.</p>
+      </div>
+      <div class="card">
+        <h5>🌐 Comercio electrónico</h5>
+        <p>Integración con plataformas online, catálogos y pagos digitales. Amplía alcance comercial.</p>
+      </div>
+      <div class="card">
+        <h5>⚙ Mantenimiento</h5>
+        <p>Programación de mantenimientos preventivos y correctivos. Reduce tiempos de inactividad y costos de reparación.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>Tipos de implementación</h4>
+    <ul class="list">
+      <li><strong>ERP en la nube:</strong> SaaS, costos iniciales bajos, escalabilidad y actualizaciones automáticas.</li>
+      <li><strong>ERP on-premise:</strong> Instalado en el centro de datos de la empresa, mayor control pero más mantenimiento.</li>
+      <li><strong>ERP de dos niveles:</strong> Combinación de ERP principal on-premise y secundario en la nube.</li>
+      <li><strong>ERP híbrido:</strong> Mezcla on-premise y nube, flexibilidad según regulaciones o seguridad.</li>
+    </ul>
+  </div>
+
+  
+</section>
+
+
+<section id="cable-estructurado" class="block">
+  <h3>6. Cable estructurado</h3>
+
+  <img src="{{ url_for('static', filename='images/cableado_estructurado.png') }}" 
+     alt="Mapa mental de infraestructura de redes" 
+     class="section-image">
+
+
+  <div class="card">
+    <h4>Categorías</h4>
+    <ul class="list">
+      <li><strong>Categoría 4:</strong> Hasta 16 Mbps, 20 MHz, UTP. Uso en hogares.</li>
+      <li><strong>Categoría 5:</strong> Hasta 1 Gbps, 100 MHz, UTP/STP. Hogares y oficinas.</li>
+      <li><strong>Categoría 6:</strong> Hasta 10 Gbps (100 m), 500 MHz, blindaje adicional. Redes empresariales.</li>
+      <li><strong>Categoría 7:</strong> Hasta 40 Gbps (50 m), 1000 MHz, blindaje total. Centros de datos.</li>
+      <li><strong>Categoría 8:</strong> Hasta 25–40 Gbps (30 m), 2000 MHz, S/FTP. Rendimiento máximo en centros de datos.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h4>Selección recomendada: Categoría 6A</h4>
+    <p>
+      Para la empresa se recomienda cable estructurado categoría 6A ya que ofrece:
+    </p>
+    <ul class="list">
+      <li>Velocidades de hasta 10 Gbps</li>
+      <li>Frecuencias de hasta 500 MHz</li>
+      <li>Mayor resistencia a interferencia electromagnética (EMI)</li>
+      <li>Mayor durabilidad y confiabilidad</li>
+    </ul>
+    <p>Características clave:</p>
+    <ul class="list">
+      <li>Cableado de 4 pares trenzados y blindados (STP)</li>
+      <li>Conectores RJ-45</li>
+      <li>Cumple con estándares TIA/EIA-568-B.2 y ISO/IEC 11801</li>
+      <li>Conectividad confiable y de alta velocidad para aplicaciones como redes de datos y voz, sistemas de control y automatización, y monitoreo de producción.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="seguridad" class="block">
+  <h3>7. Seguridad</h3>
+
+  <img src="{{ url_for('static', filename='images/base_encriptada.png') }}" 
+     alt="Mapa mental de infraestructura de redes" 
+     class="section-image">
+
+  <div class="card">
+    <h4>¿Por qué se encripta una base de datos?</h4>
+    <p>
+      La encriptación en bases de datos es una medida de seguridad que protege la información sensible contra accesos no autorizados. 
+      No siempre se encripta todo el contenido, sino <strong>campos específicos</strong> que contienen datos críticos.
+    </p>
+  </div>
+
+  <div class="card">
+    <h4>Campos que suelen encriptarse</h4>
+    <ul class="list">
+      <li>🔑 <strong>Contraseñas:</strong> Para evitar que sean legibles en caso de fuga de datos.</li>
+      <li>📧 <strong>Correos electrónicos:</strong> Para proteger la identidad de los usuarios.</li>
+      <li>💳 <strong>Números de tarjetas de crédito:</strong> Cumplimiento de normativas como PCI-DSS.</li>
+      <li>🧑 <strong>Datos personales:</strong> Nombres, direcciones o identificaciones que requieren privacidad.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h4>Beneficios de la encriptación</h4>
+    <ul class="list">
+      <li>✅ Confidencialidad: Solo usuarios autorizados pueden leer la información.</li>
+      <li>✅ Integridad: Los datos no pueden ser alterados fácilmente sin detección.</li>
+      <li>✅ Cumplimiento: Ayuda a cumplir regulaciones de protección de datos.</li>
+      <li>✅ Confianza: Los clientes saben que su información está protegida.</li>
+    </ul>
+  </div>
+
+ 
+</section>
+
+<section id="blockchain" class="block">
+  <h3>8. Blockchain</h3>
+  <p>
+    La tecnología Blockchain es una base de datos distribuida y segura que permite registrar transacciones de manera transparente e inmutable. 
+    En este apartado se presentan dos ejemplos: <strong>Waves</strong> y <strong>Bitcoin</strong>.
+  </p>
+
+  <div class="card">
+    <h4>🔷 Waves (por Javier)</h4>
+    <p>
+      Waves es una plataforma blockchain diseñada para crear y gestionar tokens personalizados de manera sencilla. 
+      Se centra en la facilidad de uso y en permitir que empresas y usuarios creen sus propios activos digitales sin necesidad de programar contratos complejos.
+    </p>
+    <ul class="list">
+      <li><strong>Creación de tokens:</strong> Permite emitir criptomonedas o activos digitales en minutos.</li>
+      <li><strong>Velocidad:</strong> Transacciones rápidas gracias a su protocolo de consenso (Leased Proof-of-Stake).</li>
+      <li><strong>Aplicaciones:</strong> Crowdfunding, programas de fidelización, pagos internos.</li>
+      <li><strong>Ejemplo práctico:</strong> Una universidad podría crear un token en Waves para gestionar créditos académicos o recompensas estudiantiles.</li>
+    </ul>
+    <img src="{{ url_for('static', filename='images/waves.png') }}" 
+     alt="Mapa mental de infraestructura de redes" 
+     class="section-image">
+  </div>
+
+  <div class="card">
+    <h4>🟡 Bitcoin (por Santiago)</h4>
+    <p>
+      Bitcoin es la primera criptomoneda descentralizada, creada en 2009 por Satoshi Nakamoto. 
+      Funciona como un sistema de pago digital peer-to-peer que elimina intermediarios y se basa en la seguridad de la cadena de bloques.
+    </p>
+    <ul class="list">
+      <li><strong>Oferta limitada:</strong> Máximo de 21 millones de bitcoins.</li>
+      <li><strong>Seguridad:</strong> Uso de criptografía y consenso Proof-of-Work.</li>
+      <li><strong>Aplicaciones:</strong> Medio de pago global, reserva de valor, transferencias internacionales.</li>
+      <li><strong>Ejemplo práctico:</strong> Una empresa puede aceptar pagos en Bitcoin para clientes internacionales, reduciendo costos de transacción.</li>
+    </ul>
+    <img src="{{ url_for('static', filename='images/bitcoin.png') }}" 
+     alt="Mapa mental de infraestructura de redes" 
+     class="section-image">
+  </div>
+</section>
+
+<section id="planta" class="block">
+  <h3>9. Planta y Planos</h3>
+
+  <div class="image-row">
+    <a href="{{ url_for('static', filename='images/plano.png') }}" target="_blank">
+      <img src="{{ url_for('static', filename='images/plano.png') }}" alt="Plano general">
+    </a>
+    <a href="{{ url_for('static', filename='images/plano2.png') }}" target="_blank">
+      <img src="{{ url_for('static', filename='images/plano2.png') }}" alt="Plano técnico 2">
+    </a>
+  </div>
+
+  <div class="card">
+    <h4>Zona de Producción – Descripción General</h4>
+
+    <h5>A qué se dedica la empresa</h5>
+    <p>
+      La empresa es una planta de manufactura industrial inteligente, enfocada en la
+      producción automatizada de componentes y dispositivos tecnológicos, integrando
+      sistemas de control, IoT y análisis de datos para mantener alta eficiencia y
+      trazabilidad.
+    </p>
+
+    <h5>Dimensiones y ubicación</h5>
+    <p>40 m × 25 m (1,000 m²)</p>
+
+    <h5>Distribución interna</h5>
+    <ul class="list">
+      <li>3 líneas de producción con pasillos longitudinales.</li>
+      <li>Pasillo central de 2 m para tránsito y mantenimiento.</li>
+      <li>Estación de control (3×4 m) con HMI, SCADA y botoneras.</li>
+      <li>Gabinetes de PLC y sensores montados en pared.</li>
+      <li>Estantes perimetrales para gateways IoT, cámaras, NVR local y equipos auxiliares.</li>
+      <li>Puerta industrial de 4 m conectada directamente al almacén.</li>
+    </ul>
+
+    <h5>Infraestructura de red</h5>
+    <ul class="list">
+      <li>Cableado estructurado Cat6A S/FTP en charolas aéreas.</li>
+      <li>Switches industriales administrables con VLAN para separar tráfico.</li>
+      <li>VLAN recomendadas: Producción (SCADA/PLC), Voz (VoIP), CCTV, Administración/gestión.</li>
+      <li>Puntos de red industriales IP65/IP67 hacia PLC, HMI, sensores IoT y cámaras.</li>
+      <li>Cámaras IP en puntos estratégicos para vigilancia operativa.</li>
+    </ul>
+
+    <h5>Automatización industrial</h5>
+    <ul class="list">
+      <li>PLC para el control de líneas, motores y actuadores.</li>
+      <li>Sensores de temperatura, proximidad, posición y finales de carrera.</li>
+      <li>Actuadores conectados a módulos de salida del PLC.</li>
+      <li>HMI/SCADA para supervisión en tiempo real.</li>
+      <li>Gateways IoT para análisis de datos, OEE y mantenimiento predictivo.</li>
+    </ul>
+
+    <h5>Seguridad y continuidad</h5>
+    <ul class="list">
+      <li>CCTV cubriendo procesos críticos y accesos.</li>
+      <li>UPS alimentando PLC, HMI, switches y equipos críticos.</li>
+      <li>TVSS y breakers dedicados para protección eléctrica.</li>
+      <li>Señalización industrial y rutas seguras para el personal.</li>
+    </ul>
+
+    <h5>Integración con otras áreas</h5>
+    <ul class="list">
+      <li>Enlace físico directo al almacén por la puerta de 4 m.</li>
+      <li>Conexión troncal al Micro Data Center para SCADA, ERP y monitoreo.</li>
+      <li>Flujo de datos hacia sistemas de producción, calidad, mantenimiento y logística.</li>
+    </ul>
+  </div>
+</section>
+
+{% endblock %}

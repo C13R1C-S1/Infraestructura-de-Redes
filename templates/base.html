@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Infraestructura de Redes - Contenido educativo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Contenido educativo sobre infraestructura de redes: antena Yagi, UPS, VoIP y mapa mental industrial.">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="site-title">Infraestructura de Redes</h1>
+      <nav class="site-nav">
+        <a href="#mapa-mental">Mapa mental</a>
+        <a href="#antena-yagi">Antena Yagi</a>
+        <a href="#ups">UPS y componentes</a>
+        <a href="#voip">Voz IP (VoIP)</a>
+        <a href="#erp">ERP</a>
+        <a href="#cable-estructurado">Cable estructurado</a>
+        <a href="#seguridad">Seguridad</a>
+        <a href="#blockchain">Blockchain</a>
+        <a href="#planta">Planta y Planos</a>
+
+      </nav>
+    </div>
+  </header>
+
+  <main class="container content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>Coba Santiago & Herrera Javier • Contenido educativo • Infraestructura de redes • {{ 2025 }}</p>
+    </div>
+  </footer>
+</body>
+</html>
