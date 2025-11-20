@@ -34,20 +34,18 @@
             color: white;
         }
 
+        /* === Layout principal === */
         .wrapper {
-            background: radial-gradient(circle at top, #0d47a1 0%, #001b3a 35%, #000814 100%);
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            margin-top: -50vh;
-            overflow: hidden;
             display: flex;
-            justify-content: center;
+            justify-content: space-evenly;
             align-items: center;
+            padding: 12rem;
+            height: 100vh;
+            background: radial-gradient(circle at top, #0d47a1 0%, #001b3a 35%, #000814 100%);
+            position: relative;
         }
 
+        /* Contenedor central */
         .container {
             z-index: 2;
             background: linear-gradient(145deg, rgba(13, 71, 161, 0.7), rgba(3, 169, 244, 0.15));
@@ -59,6 +57,7 @@
             width: 100%;
             max-width: 420px;
             box-shadow: 0 14px 45px rgba(0,0,0,0.45);
+            margin: 0 1rem;
         }
 
         h1 {
@@ -103,6 +102,7 @@
             font-weight: 600;
             width: 100%;
             margin-top: 0.6rem;
+            cursor: pointer;
         }
 
         .link-register {
@@ -120,10 +120,75 @@
             text-decoration: underline;
         }
 
+        /* === Imagen lateral === */
+        .side-media {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: right;
+            max-width: 30%;
+        }
+
+        .side-media img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+
+        .media-caption {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: #B0BEC5;
+            text-align: center;
+        }
+
+        /* === Video flotante abajo a la izquierda === */
+        .video-floating {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            width: 260px;
+            z-index: 3;
+        }
+
+        .video-floating video {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .wrapper {
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .side-media {
+                max-width: 90%;
+                margin-bottom: 1rem;
+            }
+
+            .container {
+                max-width: 90%;
+            }
+
+            .video-floating {
+                width: 220px;
+                bottom: 1rem;
+                left: 1rem;
+            }
+        }
+
+        /* Burbujas decorativas */
         .bg-bubbles {
             position: absolute;
             width: 100%;
             height: 100%;
+            z-index: 0;
         }
 
         .bg-bubbles li {
@@ -146,41 +211,55 @@
 </head>
 <body>
     <div class="wrapper">
-        <div class="login-container container fade-in-up">
+    <!-- LOGIN al centro -->
+    <div class="login-container container fade-in-up">
+        <h1>Acceso al Sistema Seguro</h1>
+        <p class="subtitle">Autenticación con contraseñas protegidas mediante hash.</p>
 
-            <h1>Acceso al Sistema Seguro</h1>
-            <p class="subtitle">Autenticación con contraseñas protegidas mediante hash.</p>
+        {% if error %}
+            <div class="error-message shake">{{ error }}</div>
+        {% endif %}
 
-            {% if error %}
-                <div class="error-message shake">{{ error }}</div>
-            {% endif %}
+        <form method="POST" class="{% if error %}shake{% endif %}">
+            <div class="input-group">
+                <span class="material-icons">person</span>
+                <input type="text" name="usuario" placeholder="Usuario" required>
+            </div>
 
-            <form method="POST" class="{% if error %}shake{% endif %}">
-                <div class="input-group">
-                    <span class="material-icons">person</span>
-                    <input type="text" name="usuario" placeholder="Usuario" required>
-                </div>
+            <div class="input-group">
+                <span class="material-icons">lock</span>
+                <input type="password" name="password" placeholder="Contraseña" required>
+            </div>
 
-                <div class="input-group">
-                    <span class="material-icons">lock</span>
-                    <input type="password" name="password" placeholder="Contraseña" required>
-                </div>
+            <button type="submit" class="login-button">Ingresar</button>
+        </form>
 
-                <button type="submit" class="login-button">Ingresar</button>
-            </form>
-
-            <!-- ESTE ES EL ENLACE QUE PEDISTE -->
-            <p class="link-register">
-                ¿Quieres registrarte? <a href="{{ url_for('registrar') }}">Crear cuenta</a>
-            </p>
-
-        </div>
-
-        <ul class="bg-bubbles">
-            <li></li><li></li><li></li><li></li><li></li>
-            <li></li><li></li><li></li><li></li><li></li>
-        </ul>
+        <p class="link-register">
+            ¿Quieres registrarte? <a href="{{ url_for('registrar') }}">Crear cuenta</a>
+        </p>
     </div>
+
+    <!-- IMAGEN DEL PERSONAJE A LA DERECHA -->
+
+
+    <!-- Video pequeño abajo a la izquierda -->
+    <div class="video-floating">
+        <video controls>
+            <source src="{{ url_for('static', filename='video/saludo.mp4') }}" type="video/mp4">
+            Tu navegador no soporta video HTML5.
+        </video>
+    </div>
+<div class="side-media right">
+        <img src="{{ url_for('static', filename='images/git.png') }}" alt="QR">
+        <p class="media-caption">Código QR para acceder a mi página de Git. </p>
+        <p class="media-caption">En caso de fallo en Login, usar admin admin</p>
+    </div>
+
+    <ul class="bg-bubbles">
+        <li></li><li></li><li></li><li></li><li></li>
+        <li></li><li></li><li></li><li></li><li></li>
+    </ul>
+</div>
+
 </body>
 </html>
-    

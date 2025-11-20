@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login – Sistema Encriptado</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* === Fuentes === */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300');
+        @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+        /* === Reset Global === */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-weight: 300;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            color: white;
+            font-weight: 300;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        input::placeholder {
+            color: white;
+        }
+
+        /* === Layout principal === */
+        .wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            height: 100vh;
+            background: radial-gradient(circle at top, #0d47a1 0%, #001b3a 35%, #000814 100%);
+            position: relative;
+        }
+
+        /* Contenedor central */
+        .container {
+            z-index: 2;
+            background: linear-gradient(145deg, rgba(13, 71, 161, 0.7), rgba(3, 169, 244, 0.15));
+            border: 1px solid rgba(144, 202, 249, 0.35);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 3rem 2.2rem 2.4rem;
+            text-align: center;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 14px 45px rgba(0,0,0,0.45);
+            margin: 0 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: #CFD8DC;
+            margin-bottom: 1.8rem;
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 0.6rem 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(144,202,249,0.15);
+        }
+
+        .input-group:focus-within {
+            box-shadow: 0 0 0 1px #03A9F4;
+        }
+
+        .input-group input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: white;
+        }
+
+        .login-button {
+            background: linear-gradient(90deg, #ffffff, #e3f2fd);
+            color: #0D47A1;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 999px;
+            font-weight: 600;
+            width: 100%;
+            margin-top: 0.6rem;
+        }
+
+        .link-register {
+            margin-top: 0.8rem;
+            font-size: 0.8rem;
+            color: #BBDEFB;
+        }
+
+        .link-register a {
+            color: #FFE082;
+            text-decoration: none;
+        }
+
+        .link-register a:hover {
+            text-decoration: underline;
+        }
+
+        /* === Imagen y video laterales === */
+        .side-media {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 30%;
+        }
+
+        .side-media img,
+        .side-media video {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .wrapper {
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .side-media {
+                max-width: 90%;
+                margin-bottom: 1rem;
+            }
+
+            .container {
+                max-width: 90%;
+            }
+        }
+
+        /* Burbujas decorativas */
+        .bg-bubbles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .bg-bubbles li {
+            position: absolute;
+            list-style: none;
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, rgba(3,169,244,0.35), rgba(3,169,244,0.0));
+            bottom: -160px;
+            border-radius: 50%;
+            border: 1px solid rgba(144, 202, 249, 0.5);
+            animation: square 25s infinite;
+        }
+
+        @keyframes square {
+            0%   { transform: translateY(0); }
+            100% { transform: translateY(-700px) rotate(600deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Imagen lado izquierdo -->
+        <div class="side-media left">
+            <img src="{{ url_for('static', filename='images/git.png') }}" alt="Imagen decorativa">
+        </div>
+
+        <!-- Contenedor central del login -->
+        <div class="login-container container fade-in-up">
+            <h1>Acceso al Sistema Seguro</h1>
+            <p class="subtitle">Autenticación con contraseñas protegidas mediante hash.</p>
+
+            {% if error %}
+                <div class="error-message shake">{{ error }}</div>
+            {% endif %}
+
+            <form method="POST" class="{% if error %}shake{% endif %}">
+                <div class="input-group">
+                    <span class="material-icons">person</span>
+                    <input type="text" name="usuario" placeholder="Usuario" required>
+                </div>
+
+                <div class="input-group">
+                    <span class="material-icons">lock</span>
+                    <input type="password" name="password" placeholder="Contraseña" required>
+                </div>
+
+                <button type="submit" class="login-button">Ingresar</button>
+            </form>
+
+            <p class="link-register">
+                ¿Quieres registrarte? <a href="{{ url_for('registrar') }}">Crear cuenta</a>
+            </p>
+        </div>
+
+        <!-- Video lado derecho -->
+        <div class="side-media right">
+            <video autoplay loop controls>
+                <source src="{{ url_for('static', filename='video/saludo.mp4') }}" type="video/mp4">
+                Tu navegador no soporta video HTML5.
+            </video>
+        </div>
+
+        <ul class="bg-bubbles">
+            <li></li><li></li><li></li><li></li><li></li>
+            <li></li><li></li><li></li><li></li><li></li>
+        </ul>
+    </div>
+</body>
+</html>
