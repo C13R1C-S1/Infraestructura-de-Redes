@@ -10,7 +10,11 @@
 <body>
   <header class="site-header">
     <div class="container header-inner">
+
+      <!-- Título -->
       <h1 class="site-title">Infraestructura de Redes</h1>
+
+      <!-- Navegación -->
       <nav class="site-nav">
         <a href="#mapa-mental">Mapa mental</a>
         <a href="#antena-yagi">Antena Yagi</a>
@@ -21,8 +25,16 @@
         <a href="#seguridad">Seguridad</a>
         <a href="#blockchain">Blockchain</a>
         <a href="#planta">Planta y Planos</a>
+        <a href="{{ url_for('logout') }}" class="logout-btn">
+  <span class="logout-icon">⎋</span>
+  Sign Out
+</a>
 
       </nav>
+
+      <!-- Botón Sign Out (Logout) -->
+
+
     </div>
   </header>
 
