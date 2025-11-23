@@ -5,8 +5,6 @@
     <title>Login – Sistema Encriptado</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         /* === Fuentes === */
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400;500;700&display=swap');
@@ -21,31 +19,62 @@
             font-weight: 300;
         }
 
-        body {
-            font-family: 'Source Sans Pro', sans-serif;
-            color: white;
-            font-weight: 300;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden;
-        }
+       body {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: white;
+    font-weight: 300;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;      /* la cambiamos abajo */
+    background: radial-gradient(circle at top, #0d47a1 0%, #001b3a 35%, #000814 100%);
+}
 
         input::placeholder {
             color: white;
         }
 
+        html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
         /* === Layout principal === */
-        .wrapper {
+.wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 2rem;
+    height: 100vh;
+    /* QUITA el background de aquí */
+    /* background: radial-gradient(...); */
+}
+        /* Columna derecha (QR) */
+        .side {
+            flex: 0 0 260px;
+            max-width: 260px;
+            z-index: 2;
             display: flex;
-            justify-content: space-evenly;
+            flex-direction: column;
             align-items: center;
-            padding: 12rem;
-            height: 100vh;
-            background: radial-gradient(circle at top, #0d47a1 0%, #001b3a 35%, #000814 100%);
-            position: relative;
+            text-align: center;
         }
 
-        /* Contenedor central */
+        .side img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+        }
+
+        .media-caption {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: #B0BEC5;
+        }
+
+        /* Contenedor central (login) */
         .container {
             z-index: 2;
             background: linear-gradient(145deg, rgba(13, 71, 161, 0.7), rgba(3, 169, 244, 0.15));
@@ -74,6 +103,7 @@
         .input-group {
             display: flex;
             align-items: center;
+            gap: 0.5rem;
             background-color: rgba(255,255,255,0.05);
             border-radius: 8px;
             padding: 0.6rem 1rem;
@@ -83,6 +113,10 @@
 
         .input-group:focus-within {
             box-shadow: 0 0 0 1px #03A9F4;
+        }
+
+        .input-group .material-icons {
+            font-size: 1.1rem;
         }
 
         .input-group input {
@@ -120,75 +154,98 @@
             text-decoration: underline;
         }
 
-        /* === Imagen lateral === */
-        .side-media {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: right;
-            max-width: 30%;
-        }
-
-        .side-media img {
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-        }
-
-        .media-caption {
-            margin-top: 0.5rem;
-            font-size: 0.85rem;
-            color: #B0BEC5;
-            text-align: center;
-        }
-
-        /* === Video flotante abajo a la izquierda === */
-        .video-floating {
+        /* === Widget flotante de asistencia (video) === */
+        .login-help {
             position: fixed;
             bottom: 1.5rem;
             left: 1.5rem;
-            width: 260px;
-            z-index: 3;
+            z-index: 30;
         }
 
-        .video-floating video {
+        .help-toggle {
+            width: 56px;
+            height: 56px;
+            border-radius: 999px;
+            border: 2px solid rgba(255,255,255,0.85);
+            background: radial-gradient(circle at top, #03A9F4 0%, #0d47a1 55%, #000814 100%);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .help-toggle span {
+            font-size: 1.6rem;
+            color: #E3F2FD;
+        }
+
+        .help-panel {
+            position: absolute;
+            bottom: 72px;
+            left: 0;
+            width: 320px;
+            max-width: calc(100vw - 2.5rem);
+            background: rgba(0, 18, 45, 0.96);
+            border-radius: 16px;
+            border: 1px solid rgba(144, 202, 249, 0.4);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.8);
+            padding: 0.9rem 0.9rem 1rem;
+            transform: translateY(20px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+
+        .login-help.open .help-panel {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .help-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.6rem;
+        }
+
+        .help-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #E3F2FD;
+        }
+
+        .help-close {
+            background: transparent;
+            border: none;
+            color: #CFD8DC;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+        .help-body video {
             width: 100%;
             height: auto;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            border-radius: 10px;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .wrapper {
-                flex-direction: column;
-                justify-content: center;
-            }
-
-            .side-media {
-                max-width: 90%;
-                margin-bottom: 1rem;
-            }
-
-            .container {
-                max-width: 90%;
-            }
-
-            .video-floating {
-                width: 220px;
-                bottom: 1rem;
-                left: 1rem;
-            }
+        .help-note {
+            margin-top: 0.4rem;
+            font-size: 0.75rem;
+            color: #B0BEC5;
         }
 
-        /* Burbujas decorativas */
+        /* === Burbujas decorativas === */
         .bg-bubbles {
             position: absolute;
             width: 100%;
             height: 100%;
             z-index: 0;
+            top: 0;
+            left: 0;
+            overflow: hidden;
         }
 
         .bg-bubbles li {
@@ -207,12 +264,66 @@
             0%   { transform: translateY(0); }
             100% { transform: translateY(-700px) rotate(600deg); }
         }
+
+        /* === Responsive === */
+        @media (max-width: 1024px) {
+            .wrapper {
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+
+            .side {
+                flex-basis: 220px;
+                max-width: 220px;
+            }
+        }
+/* === Cuando es responsive, mover el asistente a la derecha === */
+@media (max-width: 768px) {
+    body {
+        overflow-y: auto;      /* permitimos scroll vertical */
+    }
+
+    .wrapper {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        height: auto;
+        min-height: 100vh;
+        padding: 2rem 1rem;
+    }
+
+    .container,
+    .side {
+        max-width: 100%;
+    }
+}
+
+/* Animación para el QR */
+.qr-link img {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    cursor: pointer;
+}
+
+.qr-link:hover img {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.45);
+}
+
+/* Texto especial del enlace */
+.media-caption.action {
+    color: #90caf9;
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+}
+
+
     </style>
 </head>
 <body>
-    <div class="wrapper">
-    <!-- LOGIN al centro -->
-    <div class="login-container container fade-in-up">
+<div class="wrapper">
+
+    <!-- Centro: LOGIN -->
+    <div class="login-container container">
         <h1>Acceso al Sistema Seguro</h1>
         <p class="subtitle">Autenticación con contraseñas protegidas mediante hash.</p>
 
@@ -239,27 +350,66 @@
         </p>
     </div>
 
-    <!-- IMAGEN DEL PERSONAJE A LA DERECHA -->
-
-
-    <!-- Video pequeño abajo a la izquierda -->
-    <div class="video-floating">
-        <video controls>
-            <source src="{{ url_for('static', filename='video/saludo.mp4') }}" type="video/mp4">
-            Tu navegador no soporta video HTML5.
-        </video>
-    </div>
-<div class="side-media right">
+    <!-- Derecha: QR -->
+    <div class="side side-media">
+    <a href="https://github.com/C13R1C-S1/Infraestructura-de-Redes" target="_blank" rel="noopener" class="qr-link">
         <img src="{{ url_for('static', filename='images/git.png') }}" alt="QR">
-        <p class="media-caption">Código QR para acceder a mi página de Git. </p>
-        <p class="media-caption">En caso de fallo en Login, usar admin admin</p>
-    </div>
+    </a>
+    <p class="media-caption">Código QR para acceder a mi página de Git.</p>
+    <p class="media-caption action">Haz clic para ir a mi GitHub.</p>
+    <p class="media-caption">En caso de fallo en Login, usar admin admin.</p>
+</div>
 
+
+
+    <!-- Burbujas -->
     <ul class="bg-bubbles">
         <li></li><li></li><li></li><li></li><li></li>
         <li></li><li></li><li></li><li></li><li></li>
     </ul>
 </div>
+
+<!-- Widget flotante de asistencia -->
+<div class="login-help" id="loginHelp">
+    <button class="help-toggle" id="helpToggle" aria-label="Asistencia del login">
+        <span class="material-icons">live_help</span>
+    </button>
+
+    <div class="help-panel" id="helpPanel">
+        <div class="help-header">
+            <span class="help-title">Asistencia del login</span>
+            <button class="help-close" id="helpClose" aria-label="Cerrar asistencia">&times;</button>
+        </div>
+        <div class="help-body">
+            <video controls>
+                <source src="{{ url_for('static', filename='video/saludo.mp4') }}" type="video/mp4">
+                Tu navegador no soporta video HTML5.
+            </video>
+            <p class="help-note">
+                Aquí se explica cómo usar el formulario de acceso y qué hacer si hay errores.
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const widget   = document.getElementById('loginHelp');
+    const toggle   = document.getElementById('helpToggle');
+    const closeBtn = document.getElementById('helpClose');
+
+    if (toggle) {
+        toggle.addEventListener('click', function () {
+            widget.classList.toggle('open');
+        });
+    }
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function () {
+            widget.classList.remove('open');
+        });
+    }
+});
+</script>
 
 </body>
 </html>
